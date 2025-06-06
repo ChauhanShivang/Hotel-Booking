@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
     image: {type: String, required: true},
     role: {type: String, enum: ["user", "hotelOwner"], default: "user"},
     recentSearchCities: [{type: String, required: true}],
-}, {timestamp: true})
+}, {timestamps: true})
 
 const User = mongoose.model("User", userSchema)
 
