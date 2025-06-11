@@ -1,10 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Title from '../components/Title'
-import { assets, userBookingsDummyData } from '../assets/assets'
+import { assets } from '../assets/assets'
+import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 
 const MyBookings = () => {
 
-    const [bookings, setBookings] = useState(userBookingsDummyData)
+    const {axios, navigate, getToken, user} = useAppContext()
+    const [bookings, setBookings] = useState([])
+
+    const fetchUserBookings = async() => {
+        try {
+            const {data} = await axios.get('/api/bookings/user', {headers: {Authorization: `Bearer ${await getToken()}`}})
+            if(data.success){
+                setBookings(data.bookings)
+            }
+            else{
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+    useEffect(() => {
+        if(user){
+            fetchUserBookings()
+        }
+    }, [user])
 
   return (
     <div className='py-28 md:pb-35 md:pt-32 px-4 md:px-16 lg:px-24 xl:px-32'>
@@ -40,7 +63,7 @@ const MyBookings = () => {
                             <span>{booking.guests}</span>
                         </div>
 
-                        <p className='text-base'>Total : ₹{booking.totalPrice * 85}</p>
+                        <p className='text-base'>Total : ₹{booking.totalPrice}</p>
                     </div>
                 </div>
                 
