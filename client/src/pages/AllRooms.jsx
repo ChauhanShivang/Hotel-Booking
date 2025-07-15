@@ -167,7 +167,7 @@ const AllRooms = () => {
         ))}
       </div>
 
-      {/* Left Part (Filters) */}
+      {/* Right Part (Filters) */}
       <div className='bg-white w-80 border border-gray-300 text-gray-600 max-lg:mb-8 min-lg:mt-16'>
         
         <div className={`fle items-center justify-between px-5 py-2.5 min-lg:border-b border-gray-300 ${openFilters && "border-b"}`}>

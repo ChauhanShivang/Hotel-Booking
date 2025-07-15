@@ -10,6 +10,7 @@ export const getUserData = async(req, res) => {
     }
 }
 
+// POST  /api/user/store-recent-search
 // store user recent searched cities
 export const storeRecentSearchedCities = async(req, res) => {
     try{

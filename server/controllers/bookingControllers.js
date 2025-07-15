@@ -21,7 +21,6 @@ const checkAvailability = async ({ checkInDate, checkOutDate, room }) => {
 
 // API to check availability of room
 // POST /api/bookings/check-availability
-
 export const checkAvailabilityAPI = async (req, res) => {
     try {
         const { room, checkInDate, checkOutDate } = req.body
@@ -34,13 +33,12 @@ export const checkAvailabilityAPI = async (req, res) => {
 
 // API to create a new booking
 // POST /api/bookings/book
-
 export const createBooking = async (req, res) => {
     try {
         const { room, checkInDate, checkOutDate, guests } = req.body
         const user = req.user._id
 
-        // Before Cooking Check Availability
+        // Before Booking Check Availability
         const isAvailable = await checkAvailability({
             checkInDate,
             checkOutDate,
@@ -104,7 +102,6 @@ export const createBooking = async (req, res) => {
 
 // API to get all bookings for a user
 // GET /api/bookings/user
-
 export const getUserBookings = async (req, res) => {
     try {
         const user = req.user._id

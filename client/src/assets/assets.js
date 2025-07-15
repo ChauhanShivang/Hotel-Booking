@@ -79,6 +79,13 @@ export const cities = [
     "Singapore",
     "New York",
     "London",
+    "Udaipur",
+    "Shimla",
+    "Jaipur",
+    "Manali",
+    "Kasol",
+    "Goa",
+    "Daman"
 ];
 
 // Exclusive Offers Dummy Data
